@@ -55,13 +55,6 @@ class Sys{
     public int sunset;
 }
 
-class Weather{
-    public int id;
-    public String main;
-    public String description;
-    public String icon;
-}
-
 class Wind{
     public double speed;
     public int deg;
