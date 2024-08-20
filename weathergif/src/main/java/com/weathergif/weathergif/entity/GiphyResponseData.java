@@ -47,5 +47,5 @@ public class GiphyResponseData {
     private String fixed_width_small_still_url;
     private String fixed_width_small_width;
     private String fixed_width_small_height;
-    private String caption;
+    private String caption; //123
 }
