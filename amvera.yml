@@ -5,8 +5,8 @@ meta:
     version: "17"
 build:
   artifacts:
-    build/libs/*.jar: /
+    target/*.jar: /
 run:
-  jarName: main.jar
+  jarName: weathergif-0.0.1-SNAPSHOT.jar
   persistenceMount: /data
-  containerPort: 80
+  containerPort: 8080
