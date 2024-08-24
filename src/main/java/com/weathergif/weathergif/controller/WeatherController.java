@@ -1,11 +1,10 @@
 package com.weathergif.weathergif.controller;
 
-import com.weathergif.weathergif.entity.WeatherEntity;
+import com.weathergif.weathergif.query.OpenWeatherResponse;
 import com.weathergif.weathergif.service.WeatherService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,18 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
-
 @RestController
 @RequiredArgsConstructor
 public class WeatherController {
     private final WeatherService weatherService;
     @GetMapping("/weather/data")
-    public WeatherEntity getWeather(@RequestParam String city) {
+    public OpenWeatherResponse getWeather(@RequestParam String city) {
         return weatherService.getWeather(city);
     }
 

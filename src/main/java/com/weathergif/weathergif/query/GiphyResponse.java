@@ -1,4 +1,4 @@
-package com.weathergif.weathergif.entity;
+package com.weathergif.weathergif.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

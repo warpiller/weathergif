@@ -1,4 +1,4 @@
-package com.weathergif.weathergif.entity;
+package com.weathergif.weathergif.query.weather;
 
 public class Weather {
     public int id;

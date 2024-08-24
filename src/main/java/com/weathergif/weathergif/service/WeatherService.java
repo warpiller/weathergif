@@ -2,8 +2,8 @@ package com.weathergif.weathergif.service;
 
 import com.weathergif.weathergif.client.GifClient;
 import com.weathergif.weathergif.client.WeatherClient;
-import com.weathergif.weathergif.entity.GiphyResponse;
-import com.weathergif.weathergif.entity.WeatherEntity;
+import com.weathergif.weathergif.query.GiphyResponse;
+import com.weathergif.weathergif.query.OpenWeatherResponse;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ public class WeatherService {
     @Value("${gif.app.id}")
     private String api_key;
 
-    public WeatherEntity getWeather(String city) {
+    public OpenWeatherResponse getWeather(String city) {
         double lat = 55;
         double lon = 37;
         String coordinatesEntity = weatherClient.getCoordinates(city, appId);
@@ -28,8 +28,7 @@ public class WeatherService {
         JSONObject jsonObject = jsonArray.getJSONObject(0);
         lat = jsonObject.getDouble("lat");
         lon = jsonObject.getDouble("lon");
-        WeatherEntity weatherEntity = weatherClient.getWeather(lat, lon, appId);
-        return weatherEntity;
+        return weatherClient.getWeather(lat, lon, appId);
     }
     public String getWeatherGif(String city) {
         double lat = 55;
@@ -39,7 +38,7 @@ public class WeatherService {
         JSONObject jsonObject = jsonArray.getJSONObject(0);
         lat = jsonObject.getDouble("lat");
         lon = jsonObject.getDouble("lon");
-        WeatherEntity weatherEntity = weatherClient.getWeather(lat, lon, appId);
+        OpenWeatherResponse weatherEntity = weatherClient.getWeather(lat, lon, appId);
         GiphyResponse giphyResponse = gifClient.getRandomGif(api_key, weatherEntity.weather.get(0).description, "r");
         return giphyResponse.getData().getImages().get("original").get("url");
     }

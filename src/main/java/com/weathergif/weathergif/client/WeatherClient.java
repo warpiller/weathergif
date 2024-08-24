@@ -1,6 +1,6 @@
 package com.weathergif.weathergif.client;
 
-import com.weathergif.weathergif.entity.WeatherEntity;
+import com.weathergif.weathergif.query.OpenWeatherResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +12,9 @@ public interface WeatherClient {
             @RequestParam String q,
             @RequestParam String appid
     );
+
     @GetMapping("/data/2.5/weather")
-    WeatherEntity getWeather(
+    OpenWeatherResponse getWeather(
             @RequestParam double lat,
             @RequestParam double lon,
             @RequestParam String appid
